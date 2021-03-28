@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'Peminjaman.dart';
+import 'Pendanaan.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,24 +14,87 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Peminjaman'),
+          title: Text('Home'),
+          actions: <Widget>[
+            IconButton(
+            icon: const Icon(Icons.add_alert),
+            tooltip: 'Show Snackbar',
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('This is a snackbar')));
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.navigate_next),
+            tooltip: 'Go to the next page',
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute<void>(
+                builder: (BuildContext context) {
+                  return Scaffold(
+                    appBar: AppBar(
+                      title: const Text('Next page'),
+                    ),
+                    body: const Center(
+                      child: Text(
+                        'This is the next page',
+                        style: TextStyle(fontSize: 24),
+                      ),
+                    ),
+                  );
+                },
+              ));
+            },
+          ),
+        ],
           backgroundColor: Colors.orangeAccent,
         ),
-        body: Peminjaman(),
+        body: Home(),
         backgroundColor: Colors.grey[100],
+        drawer: Drawer(
+          child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Drawer Header'),
+              decoration: BoxDecoration(
+                color: Colors.orangeAccent,
+              ),
+            ),
+            ListTile(
+              title: Text('Item 1'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Item 2'),
+              onTap: () {
+                // Update the state of the app
+                // ...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+        ),
       ),
     );
   }
 }
 
-class Peminjaman extends StatefulWidget {
+class Home extends StatefulWidget {
   @override
-  _Peminjaman createState() => _Peminjaman();
+  _Home createState() => _Home();
 }
 
-class _Peminjaman extends State<Peminjaman> {
+class _Home extends State<Home> {
   @override
-  bool CheckBox = false;
+  bool checkBox = false;
 
   TextEditingController controllerNama = new TextEditingController();
   TextEditingController controllerAlasan = new TextEditingController();
@@ -56,83 +121,124 @@ class _Peminjaman extends State<Peminjaman> {
           return alertDialog;
         });
   }
-
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          Container(
-            margin: EdgeInsets.all(15.0),
-            child: Column(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            new Row(
               children: <Widget>[
-                TextField(
-                  controller: controllerNama,
-                  decoration: InputDecoration(
-                      hintText: 'Nama Peminjam',
-                      labelText: 'Nama Peminjam',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0))),
-                ),
-                Padding(padding: EdgeInsets.only(top: 20.0)),
-                TextField(
-                  controller: controllerAlasan,
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                      hintText: 'Alasan Peminjaman',
-                      labelText: 'Alasan Peminjaman',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0))),
-                ),
-                Padding(padding: EdgeInsets.only(top: 20.0)),
-                TextField(
-                  controller: controllerJumlah,
-                  decoration: InputDecoration(
-                      hintText: 'Jumlah Pinjaman',
-                      labelText: 'Jumlah Pinjaman',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0))),
-                ),
-                Padding(padding: EdgeInsets.only(top: 20.0)),
-                TextField(
-                  controller: controllerTenor,
-                  decoration: InputDecoration(
-                      hintText: 'Tenor',
-                      labelText: 'Tenor',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0))),
-                ),
-                SizedBox(height: 25),
-                Row(
-                  children: <Widget>[
-                    Checkbox(
-                        value: CheckBox,
-                        onChanged: (bool value) {
-                          print(value);
-                          setState(() {
-                            CheckBox = value;
-                          });
-                        }),
-                    Flexible(
-                      child: Text(
-                          'Anda sudah membaca dan menyetujui term dan kondisi dari app ini dengan mengajukan pinjaman ini'),
+                Expanded(
+                  child:Padding(
+                    padding: const EdgeInsets.all(10),
+                  child: new Container(
+                    height: 200,
+                    decoration: new BoxDecoration(
+                      color: Colors.orangeAccent
                     ),
-                  ],
-                ),
-                SizedBox(height: 35),
-                new RaisedButton(
-                    child: new Text(
-                      "AJUKAN PINJAMAN",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    color: Colors.blue,
-                    onPressed: () {
-                      KirimData();
-                    })
+                  ),
+                ) 
+              )
               ],
             ),
-          ),
-        ],
-      ),
+            new Row(
+              children: <Widget>[
+                Expanded(
+                  child:Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Peminjaman2()));
+                  },
+                  child: new Container(
+                    alignment: Alignment.center, 
+                    height: 50,
+                    decoration: new BoxDecoration(
+                      color: Colors.orangeAccent,borderRadius: new BorderRadius.circular(10) 
+                    ),child:new Text("Aju Pinjaman",style: new TextStyle(fontSize: 20,color: Colors.white),),
+                  ),
+                ) 
+              )
+             )
+            ],
+            ),
+            new Row(
+              children: <Widget>[
+                Expanded(
+                  child:Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Pendanaan2()));
+                  },
+                  child: new Container(
+                   alignment: Alignment.center, 
+                    height: 50,
+                    decoration: new BoxDecoration(
+                      color: Colors.orangeAccent,borderRadius: new BorderRadius.circular(10) 
+                    ),
+                    child:new Text("Pemberian dana",style: new TextStyle(fontSize: 20,color: Colors.white),),
+                  ),
+                ) 
+              )
+                )],
+            ),
+            new Row(
+              children: <Widget>[
+                Expanded(
+                  child:Padding(
+                    padding: const EdgeInsets.all(10),
+                  child: new Container(
+                    alignment: Alignment.center, 
+                    height: 50,
+                    decoration: new BoxDecoration(
+                      color: Colors.orangeAccent,borderRadius: new BorderRadius.circular(10) 
+                    ),
+                    child:new Text("Total Pinjaman : Rp 1.000.000",style: new TextStyle(fontSize: 20,color: Colors.white),),
+                  ),
+                ) 
+              )
+              ],
+            ),
+            new Row(
+              children: <Widget>[
+                Expanded(
+                  child:Padding(
+                    padding: const EdgeInsets.all(10),
+                  child: new Container(
+                    alignment: Alignment.center, 
+                    height: 50,
+                    decoration: new BoxDecoration(
+                      color: Colors.orangeAccent,borderRadius: new BorderRadius.circular(10) 
+                    ),
+                    child:new Text("Total Pendanaan : Rp 100.000",style: new TextStyle(fontSize: 20,color: Colors.white),),
+                  ),
+                ) 
+              )
+              ],
+            ),
+            new Row(
+              children: <Widget>[
+                Expanded(
+                  child:Padding(
+                    padding: const EdgeInsets.all(10),
+                  child: new Container(
+                    alignment: Alignment.center, 
+                    height: 50,
+                    decoration: new BoxDecoration(
+                      color: Colors.orangeAccent,borderRadius: new BorderRadius.circular(10) 
+                    ),
+                    child:new Text("Pembayaran",style: new TextStyle(fontSize: 20,color: Colors.white),),
+                  ),
+                ) 
+              )
+              ],
+            )
+          ],)
+      )
     );
   }
 }
