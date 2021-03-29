@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/Profil.dart';
 
 class Peminjaman extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -48,27 +49,16 @@ class Peminjaman extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              child: Text('Drawer Header'),
+              child: Text('Nama Pengguna'),
               decoration: BoxDecoration(
                 color: Colors.orangeAccent,
               ),
             ),
             ListTile(
-              title: Text('Item 1'),
+              title: Text('Profile'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Item 2'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
+                Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Profile()));
               },
             ),
           ],

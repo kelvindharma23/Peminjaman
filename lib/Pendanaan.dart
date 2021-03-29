@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/Pembayaran.dart';
+import 'package:flutter_application_2/Profil.dart';
 
 class Pendanaan2 extends StatelessWidget{
   Widget build(BuildContext context) {
@@ -7,7 +8,7 @@ class Pendanaan2 extends StatelessWidget{
       title: 'Flutter Demo',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Peminjaman'),
+          title: Text('Pendanaan'),
           actions: <Widget>[
             IconButton(
             icon: const Icon(Icons.add_alert),
@@ -49,27 +50,16 @@ class Pendanaan2 extends StatelessWidget{
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
-              child: Text('Drawer Header'),
+              child: Text('Nama Pengguna'),
               decoration: BoxDecoration(
                 color: Colors.orangeAccent,
               ),
             ),
             ListTile(
-              title: Text('Item 1'),
+              title: Text('Profile'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Item 2'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
+                Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Profile()));
               },
             ),
           ],
