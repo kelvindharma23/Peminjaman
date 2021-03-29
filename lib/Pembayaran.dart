@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Peminjaman extends StatelessWidget {
+class Pembayaran extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
@@ -40,7 +40,7 @@ class Peminjaman extends StatelessWidget {
         ],
           backgroundColor: Colors.orangeAccent,
         ),
-        body: Peminjaman3(),
+        body: Pembayaran3(),
         backgroundColor: Colors.grey[100],
         drawer: Drawer(
           child: ListView(
@@ -79,16 +79,15 @@ class Peminjaman extends StatelessWidget {
   }
 }
 
-class Peminjaman3 extends StatefulWidget {
+class Pembayaran3 extends StatefulWidget {
   @override
-  _Peminjaman2 createState() => _Peminjaman2();
+  _Pembayaran2 createState() => _Pembayaran2();
 }
-class _Peminjaman2 extends State<Peminjaman3> {
+class _Pembayaran2 extends State<Pembayaran3> {
   
   bool CheckBox = false;
 
 TextEditingController controllerNama = new TextEditingController();
-TextEditingController controllerAlasan = new TextEditingController();
 TextEditingController controllerJumlah = new TextEditingController();
 TextEditingController controllerTenor = new TextEditingController();
 
@@ -98,10 +97,8 @@ void KirimData() {
       height: 200.0,
       child: Column(
         children: <Widget>[
-          Text("Nama Lengkap: ${controllerNama.text}"),
-          Text("Alasan : ${controllerAlasan.text}"),
-          Text("Jumlah pinjaman: ${controllerJumlah.text}"),
-          Text("Tenor: ${controllerTenor.text} bulan"),
+          Text("Nomor Rekening: ${controllerNama.text}"),
+          Text("Tanggal Lahir: ${controllerTenor.text} bulan"),
         ],
       ),
     ),
@@ -123,18 +120,8 @@ void KirimData() {
                 TextField(
                   controller: controllerNama,
                   decoration: InputDecoration(
-                      hintText: 'Nama Peminjam',
-                      labelText: 'Nama Peminjam',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0))),
-                ),
-                Padding(padding: EdgeInsets.only(top: 20.0)),
-                TextField(
-                  controller: controllerAlasan,
-                  maxLines: 3,
-                  decoration: InputDecoration(
-                      hintText: 'Alasan Peminjaman',
-                      labelText: 'Alasan Peminjaman',
+                      hintText: 'Nomor Rekening',
+                      labelText: 'Nomor Rekening',
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0))),
                 ),
@@ -142,8 +129,8 @@ void KirimData() {
                 TextField(
                   controller: controllerJumlah,
                   decoration: InputDecoration(
-                      hintText: 'Jumlah Pinjaman',
-                      labelText: 'Jumlah Pinjaman',
+                      hintText: 'Password',
+                      labelText: 'Password',
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0))),
                 ),
@@ -151,8 +138,8 @@ void KirimData() {
                 TextField(
                   controller: controllerTenor,
                   decoration: InputDecoration(
-                      hintText: 'Tenor',
-                      labelText: 'Tenor',
+                      hintText: 'Tanggal Lahir',
+                      labelText: 'Tanggal Lahir',
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0))),
                 ),
@@ -169,14 +156,14 @@ void KirimData() {
                         }),
                     Flexible(
                       child: Text(
-                          'Anda sudah membaca dan menyetujui term dan kondisi dari app ini dengan mengajukan pinjaman ini'),
+                          'Anda sudah membaca dan menyetujui term dan kondisi dari app ini dengan melakukan pembayaran ini'),
                     ),
                   ],
                 ),
                 SizedBox(height: 35),
                 new RaisedButton(
                     child: new Text(
-                      "AJUKAN PINJAMAN",
+                      "AJUKAN PEMBAYARAN",
                       style: TextStyle(color: Colors.white),
                     ),
                     color: Colors.blue,

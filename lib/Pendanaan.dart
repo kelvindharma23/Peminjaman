@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/Pembayaran.dart';
 
 class Pendanaan2 extends StatelessWidget{
   Widget build(BuildContext context) {
@@ -82,9 +83,6 @@ class Pendanaan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('NAMA APLIKASI'),
-      ),
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.all(10),
@@ -233,7 +231,8 @@ class Via extends StatelessWidget {
                   elevation: 0.0,
                   splashColor: Colors.blueGrey,
                   onPressed: () {
-                    // Perform some action
+                     Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Pembayaran()));
                   },
                 ),
               ),
@@ -248,7 +247,8 @@ class Via extends StatelessWidget {
                   elevation: 0.0,
                   splashColor: Colors.blueGrey,
                   onPressed: () {
-                    // Perform some action
+                     Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Pembayaran()));
                   },
                 ),
               ),
@@ -263,7 +263,8 @@ class Via extends StatelessWidget {
                   elevation: 0.0,
                   splashColor: Colors.blueGrey,
                   onPressed: () {
-                    // Perform some action
+                     Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Pembayaran()));
                   },
                 ),
               ),

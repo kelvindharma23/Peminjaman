@@ -150,7 +150,7 @@ class _Home extends State<Home> {
                     child: GestureDetector(
                   onTap: () {
                     Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => Peminjaman2()));
+                        MaterialPageRoute(builder: (context) => Peminjaman()));
                   },
                   child: new Container(
                     alignment: Alignment.center, 
